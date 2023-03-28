@@ -7,17 +7,21 @@ import (
 
 func mergeStoredArrays(sortedArray1, sortedArray2 []int) []int {
 	var i, j int = 1, 1
-	// A primeira coisa que eu preciso fazer é tratar dos casos onde uma das entradas seja vazia. Neste caso eu retorno imediatamente a outra entrada
-	if len(sortedArray1) == 0 {
-		return sortedArray2
-	}
-	if len(sortedArray2) == 0 {
-		return sortedArray1
-	}
-	// Para não ficar repetindo os lens, eu tomo o tamanho das arrays no início
-	lenArr1, lenArr2 := len(sortedArray1), len(sortedArray2)
 	// Crio um slice vazio para ir inserindo os dados
 	merged := make([]int, 0)
+	// Para não ficar repetindo os lens, eu tomo o tamanho das arrays no início
+	lenArr1, lenArr2 := len(sortedArray1), len(sortedArray2)
+
+	// A primeira coisa que eu preciso fazer é tratar dos casos onde uma (ou ambas as) entradas seja(m) vazia(s). Neste caso eu retorno imediatamente a outra entrada ou o slice vazio
+	if lenArr1 == 0 && lenArr2 == 0 {
+		return merged //slice vazio
+	}
+	if lenArr1 == 0 {
+		return sortedArray2
+	}
+	if lenArr2 == 0 {
+		return sortedArray1
+	}
 	// Tomo os itens iniciais de cada array
 	currentItemAr1 := sortedArray1[0]
 	currentItemAr2 := sortedArray2[0]
