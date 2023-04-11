@@ -1,3 +1,3 @@
-module elv.com.br/array
+module elv.com.br/ds
 
 go 1.20

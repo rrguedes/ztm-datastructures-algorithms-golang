@@ -4,13 +4,16 @@ import (
 	"fmt"
 )
 
+// Criar uma array com tamanho específico como parte de uma struct
+
 type HashEntry struct {
 	key   string
 	value int
 }
 
 type HashTable struct {
-	data []HashEntry
+	size int
+	data []int
 }
 
 func (hash *HashTable) Size() int {
@@ -19,8 +22,7 @@ func (hash *HashTable) Size() int {
 
 func (hash *HashTable) Set(key string, value int) {
 	address := hash.hash(key)
-	emptyHashEntry := HashEntry{}
-	if hash.data[address] == emptyHashEntry {
+	if hash.data[address] ==  {
 		hash.data = append(hash.data[:address], HashEntry{key, value})
 	}
 }
